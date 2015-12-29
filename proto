@@ -1,0 +1,58 @@
+/**
+ * Created by Kristina_Patrakova on 12/29/2015.
+ */
+var Ware = function(price,image){
+    this.price = price;
+    this.image = image;
+}
+Ware.prototype.print = function(){
+    console.log('       ' +"Price:", this.price);
+    console.log('       ' +"Image:", this.image);
+}
+
+var Food = function(price, image, apptime, fvalue){
+    Ware.call(this,price,image);
+    this.apptime = apptime;
+    this.fvalue = fvalue;
+}
+Food.prototype = Object.create(Ware.prototype);
+
+Food.prototype.print = function() {
+    console.log('Food.Ware:');
+    console.log('   ' + 'Food:');
+    Ware.prototype.print.call(this);
+    console.log('       ' +"Apptime:", this.apptime);
+    console.log('       ' +"Value:", this.fvalue);
+
+}
+
+var Computer = function(price, image,processor,memory){
+    Ware.call(this,price,image);
+    this.processor = processor;
+    this.memory = memory;
+}
+Computer.prototype =  Object.create(Ware.prototype);
+
+Computer.prototype.print = function() {
+    console.log('Computer.Ware:');
+    console.log('   ' + 'Computer:');
+    Ware.prototype.print.call(this);
+    console.log('       ' + "Processor:", this.processor);
+    console.log('       ' +"Memory:", this.memory);
+
+
+}
+
+var applesGlory = new Food('100rub/1kg','apples.img','10days','100 kkal/100g');
+var applesMac = new Food('120rub/1kg','apples.img','11days','100 kkal/100g');
+var comp1 = new Computer('1000$','1.img','3,3 GHz','1Tb');
+
+var wares = [applesGlory,applesMac, comp1];
+
+function printWares(wares) {
+    wares.forEach(function(ware){
+        ware.print();
+    })
+}
+
+printWares(wares);
