@@ -17,5 +17,6 @@ Vector.prototype.minus = function(b){
 };
 
 var a = new Vector(1, 2);
+console.log(a.plus(new Vector(2, 3)));
 console.log(new Vector(1, 2).plus(new Vector(2, 3)));
 console.log(new Vector(1, 2).minus(new Vector(2, 3)));
